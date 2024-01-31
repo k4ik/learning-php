@@ -61,27 +61,22 @@
 <body>
     <main>
         <form method="post">
-            <label for="value">Enter a value:</label>
-            <input type="number" placeholder="2" name="value">
-            <label for="value">Enter another value:</label>
-            <input type="number" placeholder="5" name="anotherValue">
+            <label for="value">Enter your name:</label>
+            <input type="text" placeholder="Name" name="name">
             <button type="submit">Submit</button>
 
 
             <?php 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $value = $_POST["value"];
-                    $anotherValue = $_POST["anotherValue"];
+                    $name = $_POST["name"];
 
-                    echo sum($value, $anotherValue);
+                    sayHello($name);
                 } else {
                     echo "Error.";
                 }
 
-                function sum(int $value, int $anotherValue) {
-                    $sum = $value + $anotherValue;
-
-                    return $sum;
+                function sayHello(string $name) {
+                    echo "Hello $name";
                 }
             ?>
         </form>
