@@ -4,6 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #f0f8ff;
+            --form-bg-color: #fff2cc;
+            --button-bg-color: #f6b26b;
+            ---button-bg-color-hover: #cd9962;
+        }
+
+        body {
+            background-color: var(--bg-color);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form, .result {
+            display: flex;
+            flex-direction: column;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        form {
+            background-color: var(--form-bg-color);
+            padding: 10px;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: var(--button-bg-color);
+            outline: none;
+            border: 1px solid var(---button-bg-color-hover);
+        }
+
+        button:hover {
+            transition: 0.5s;
+            background-color: var(---button-bg-color-hover);
+        }
+
+        .result {
+            background-color: var(--form-bg-color);
+            padding: 5px 0 10px 0;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
     <main>
