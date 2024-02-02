@@ -1,3 +1,35 @@
+<?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $firstNote = (float) $_POST["firstNote"];
+        $secondNote = (float)$_POST["secondNote"];
+        $thirdNote = (float) $_POST["thirdNote"];
+
+        $average = number_format(getAverage($firstNote, $secondNote, $thirdNote),1, ".", " ");
+        $stats = getStats($average);
+    }
+
+    function getAverage($firstNote, $secondNote, $thirdNote) {
+        $average = ($firstNote + $secondNote + $thirdNote) / (float)3;
+        return $average;
+    }
+
+    function getStats($average) {
+        $stats = "";
+
+        if($average >= 0 && $average < 6.0) {
+            $stats = "DISAPPROVED";
+        } elseif($average == 6.0) {
+            $stats = "RECOVERY";
+        } elseif($average > 6.0 && $average <= 10.0) {
+            $stats = "APPROVED";
+        } else {
+            $stats = "Invalid Status";
+        }
+
+        return $stats;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,8 +72,12 @@
             margin-bottom: 15px;
         }
 
+        button {
+            margin-bottom: 10px;
+        }
+
         p {
-            margin-top: 20px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -62,7 +98,8 @@
             </fieldset>
             <button type="submit">Calculate</button>
         </form>
-        <p>Average:</p>
+        <p>Average: <?php echo $average;?></p>
+        <p>Stats: <?php echo $stats;?></p>
     </main>
 </body>
 </html>
