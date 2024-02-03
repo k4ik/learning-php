@@ -7,8 +7,15 @@
 
     function isTriangle($side1, $side2, $side3) {
         if ($side1 + $side2 > $side3 && $side1 + $side3 > $side2 && $side2 + $side3 > $side1) {
-            echo "It's a triangle";
+            echo "It's a triangle<br>";
 
+            if($side1 == $side2 && $side2 == $side3) {
+                echo "Is an equilateral triangle";
+            } elseif($side1 != $side2 && $side2 != $side3 && $side1 != $side3) {
+                echo "It's a scalene triangle";
+            } else {
+                echo "Is an isosceles triangle";
+            }
             
         } else {
             echo "It's not a triangle";
