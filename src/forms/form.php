@@ -6,7 +6,7 @@
     <title>Formulários</title>
 </head>
 <body>
-    <form method="post">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="name">Nome:</label><br>
         <input type="text" name="name"><br>
         <label for="email">Email:</label><br>
@@ -15,10 +15,19 @@
         <button>Enviar</button>
     </form>
     <?php 
-        $name = $_POST["name"];
-        $email = $_POST["email"];
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = test_input($_POST["name"]);
+            $email = test_input($_POST["email"]);
 
-        echo "$name<br>$email";
+            echo "$name<br>$email";
+        }
+
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
     ?>
 </body>
 </html>
